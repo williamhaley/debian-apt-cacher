@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+#trap interrupt INT
+
+#function interrupt() {
+#    echo "** Trapped CTRL-C"
+#}
+
+ip -f inet addr show eth0
+
+printf "\nRunning...\n"
+
+# PassThroughPattern allows HTTPS repos like docker to work, but it will not cache.
+apt-cacher-ng ForeGround=1 CacheDir=/cache PassThroughPattern=".*"
+
